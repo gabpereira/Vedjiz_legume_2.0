@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
-import axios from 'axios'
+import axios from 'axios',
 
 import { AuthContext } from './src/components/Context';
 import { Alert } from 'react-native';
@@ -12,6 +12,7 @@ export default function App() {
   const [isLoading, setIsLoading] = React.useState(false);
   const [userToken, setUserToken] = React.useState(null);
   const [basket, setBasket] = React.useState([]);
+  const [quantity, setQuantity] = React.useState([]);
   React.useEffect(() => {
     async function fetchData()
     {
@@ -64,6 +65,21 @@ export default function App() {
         
         await AsyncStorage.setItem('@basket', JSON.stringify([]))   
         setBasket([])     
+      },
+      updateQuantityProduct: async (quantity) =>{
+        try {
+          setQuantity()
+          var res = await axios.post(`/products/quantity`, { quantity: products.quantity })
+          setUserToken(null)
+          Alert.alert("Les quantités ont été enregistrées")
+        }
+        catch (e) {
+          console.log(e.message)
+          Alert.alert("Une erreur s'est produite")
+        }
+        finally {
+          setIsLoading(false)
+        }
       },
       signIn: async (token) => {
         try {
