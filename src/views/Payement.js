@@ -2,18 +2,18 @@ import React from 'react';
 import axios from 'axios';
 
 import Icon from 'react-native-vector-icons/Ionicons';
-import { View, ScrollView, ImageBackground, StyleSheet, Dimensions, Text, TouchableOpacity, Alert, RefreshControl } from 'react-native';
+import { View, ScrollView, ImageBackground, StyleSheet, Dimensions, Text, TouchableOpacity, Alert } from 'react-native';
 import { AuthContext } from '../components/Context';
 import { TextInput } from 'react-native-gesture-handler';
 import { isEmpty } from '../components/Helpers';
 
-import HorizontalSeparation from "../components/HorizontalSeparation";
-import TotalPriceBasket from "../components/TotalPriceBasket";
+import HorizontalSeparation from '../components/HorizontalSeparation';
+import TotalPriceBasket from '../components/TotalPriceBasket';
 
 export default function Payement({ navigation }) {
     const { basket, removeBasket } = React.useContext(AuthContext);
     const [envelopeNumber, setEnvelopeNumber] = React.useState(null);
-    const [price, setPrice] = React.useState("0");
+    const [price, setPrice] = React.useState('0');
     const [isGood, setIsGood] = React.useState(false);
     const [hasToConfirme, setHasToConfirme] = React.useState(false);
 
@@ -23,12 +23,12 @@ export default function Payement({ navigation }) {
             basket.forEach(({ id, quantity }) => {
                 list = [...list, { product_id: id, quantity: quantity }]
             });
-            axios.post("/baskets", { purchases: list })
+            axios.post('/baskets', { purchases: list })
             removeBasket()
-            navigation.navigate("Panier")
-            navigation.navigate("Profil")
+            navigation.navigate('Panier')
+            navigation.navigate('Profil')
         } catch (error) {
-            Alert.alert("😨 Error panier", "Veuillez re-éssayer dans quelques instants,\nIl se peut qu'un problème de connection soit le problème")
+            Alert.alert('😨 Error panier', 'Veuillez re-éssayer dans quelques instants,\nIl se peut qu'un problème de connection soit le problème'')
         }
     }
     return (
@@ -43,8 +43,8 @@ export default function Payement({ navigation }) {
                     <TextInput
                         style={styles.textInput}
                         value={envelopeNumber}
-                        placeholderTextColor="rgb(180, 180, 180)"
-                        placeholder="QjbOeytSgJI0cyh0e55"
+                        placeholderTextColor='rgb(180, 180, 180)'
+                        placeholder='QjbOeytSgJI0cyh0e55'
                         onChangeText={setEnvelopeNumber}
                     />
                     {!isEmpty(envelopeNumber) &&
@@ -52,7 +52,7 @@ export default function Payement({ navigation }) {
                             style={styles.btnEye}
                             onPress={() => setEnvelopeNumber(null)}
                         >
-                            <Icon name={"close-outline"} size={26} color="white" />
+                            <Icon name={'close-outline'} size={26} color='white' />
                         </TouchableOpacity>
                     }
                 </View>
@@ -71,7 +71,7 @@ export default function Payement({ navigation }) {
                             if(error.response.status == 400)
                                 setIsGood(true)
                         }
-                        // 
+                        //
 
 
                         //if incorrect or existing message
@@ -118,10 +118,10 @@ export default function Payement({ navigation }) {
                                             onPress: () => console.log("Cancel Pressed"),
                                             style: "cancel"
                                         },
-                                        { 
-                                            text: "Oui", 
+                                        {
+                                            text: "Oui",
                                             onPress: () => {
-                                                console.log("User has confirmed, send to api") 
+                                                console.log("User has confirmed, send to api")
                                                 sendBasket()
                                             }
                                         }

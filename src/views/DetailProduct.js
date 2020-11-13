@@ -11,7 +11,7 @@ export default function DetailProduct({ route }) {
 
     async function addToMarket(product) {
         addToBasket(product)
-        Alert.alert("Market 👍", `Ajout de ${product.name} au panier`);
+        Alert.alert('Market 👍', `Ajout de ${product.name} au panier`);
     }
     return (
         <ImageBackground
@@ -31,25 +31,25 @@ export default function DetailProduct({ route }) {
                     </ScrollView>
                     <View style={styles.providerGroup}>
                         <Text style={styles.providerTitle}>Fournisseur(s):</Text>
-                        
+
                         <FlatList style={styles.providers}
                             data={product.suppliers}
                             keyExtractor={(supplier) => supplier.pivot.supplier_id.toString()}
                             ListEmptyComponent={
-                                <Text style={styles.error}>Aucun fournisseur pour ce produit</Text> 
+                                <Text style={styles.error}>Aucun fournisseur pour ce produit</Text>
                             }
-                            renderItem={(supplier) => (  
+                            renderItem={(supplier) => (
                                 <View style={styles.provider}>
                                     <Text>Compagnie: {supplier.item.company_name}</Text>
                                     <Text>ville: {supplier.item.city}</Text>
-                                </View>                              
+                                </View>
                             )}
                         />
-                    </View>                    
+                    </View>
                     <View style={styles.market}>
                         <TouchableOpacity
                             onPress={() => addToMarket(product)}>
-                            <Icon name="shopping-basket-add" size={26} />
+                            <Icon name='shopping-basket-add' size={26} />
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -65,18 +65,18 @@ const styles = StyleSheet.create({
         height: Dimensions.get('window').height,
     },
     detailProduct: {
-        justifyContent: "center",
-        alignItems: "center",
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     productBackground: {
         marginTop: 20,
-        width: Dimensions.get("window").width - 20,
-        height: Dimensions.get("window").height - 120,
+        width: Dimensions.get('window').width - 20,
+        height: Dimensions.get('window').height - 120,
         backgroundColor: "rgba(200, 200, 200, 0.8)",
         padding: 40
     },
     picture: {
-        width: "100%",
+        width: '100%',
         height: 150,
         resizeMode: 'contain',
         overflow: "hidden",
@@ -85,13 +85,13 @@ const styles = StyleSheet.create({
         borderRadius: 100,
     },
     details: {
-        width: "100%",
-        flexDirection: "row",
-        justifyContent: "space-between",
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
         marginVertical: 20
     },
     description: {
-        height: "20%",
+        height: '20%',
         marginBottom: 20,
     },
     descriptionText: {
@@ -99,30 +99,30 @@ const styles = StyleSheet.create({
     },
     providerGroup: {
         borderWidth: 1,
-        borderColor: "transparent",
+        borderColor: 'transparent',
         borderTopColor: "rgba(0, 0, 0, 0.2)",
         paddingTop: 20,
     },
     providerTitle: {
         fontSize: 20,
-        textDecorationLine: "underline",
+        textDecorationLine: 'underline',
         marginBottom: 10
     },
-    providers: {        
+    providers: {
         height: 100,
     },
     provider: {
         padding: 2,
         paddingLeft: 20,
         borderWidth: 1,
-        borderColor: "transparent",
-        borderBottomColor: "rgba(0, 0, 0, 0.2)",        
+        borderColor: 'transparent',
+        borderBottomColor: "rgba(0, 0, 0, 0.2)",
     },
     noBorders: {
-        borderBottomColor: "transparent",
+        borderBottomColor: 'transparent',
     },
     market: {
-        position: "absolute",
+        position: 'absolute',
         right: 20,
         top: 20,
         width: 40,
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
         paddingTop: 7,
         paddingLeft: 2,
         borderRadius: 100,
-        overflow:"hidden",
+        overflow:'hidden',
         backgroundColor: "rgb(109, 116, 220)",
 
     }

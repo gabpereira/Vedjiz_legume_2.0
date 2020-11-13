@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, ScrollView, Dimensions, ImageBackground, StyleSheet } from 'react-native';
-import Login from "../components/Login";
-import Register from "../components/Register";
-import HorizontalSeparation from "../components/HorizontalSeparation";
+import Login from '../components/Login';
+import Register from '../components/Register';
+import HorizontalSeparation from '../components/HorizontalSeparation';
 
 export default function Connection() {
     return (
@@ -12,9 +12,9 @@ export default function Connection() {
         >
             <View>
                 <ScrollView>
-                    <HorizontalSeparation title="Register" color="rgba(255, 255, 255, 0.7)" />
+                    <HorizontalSeparation title='Register' color='rgba(255, 255, 255, 0.7)' />
                     <Register />
-                    <HorizontalSeparation title="Login" color="rgba(0, 0, 0, 0.7)" />
+                    <HorizontalSeparation title='Login' color='rgba(0, 0, 0, 0.7)' />
                     <Login />
                 </ScrollView>
             </View>

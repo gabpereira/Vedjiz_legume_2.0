@@ -3,7 +3,7 @@ import axios from 'axios';
 import { FlatList, View, ImageBackground, StyleSheet, Dimensions, Text, Alert, RefreshControl } from 'react-native';
 
 import Splash from './Splash';
-import Product from "../components/Product";
+import Product from '../components/Product';
 
 export default function ListOfProduct(props) {
     const { navigation } = props;
@@ -20,7 +20,7 @@ export default function ListOfProduct(props) {
         }
         catch (e) {
             console.log(e.message)
-            Alert.alert("😵 Erreur de connexion", "Une erreur est survenue lors de la connexion!\nMerci de vérifier que vous ayez bien une connexion internet...")
+            Alert.alert('😵 Erreur de connexion', 'Une erreur est survenue lors de la connexion!\nMerci de vérifier que vous ayez bien une connexion internet...')
             setProducts([])
         }
         finally {

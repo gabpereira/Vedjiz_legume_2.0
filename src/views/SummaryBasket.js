@@ -1,8 +1,8 @@
 import React from 'react';
 import { FlatList, View, ImageBackground, StyleSheet, Dimensions, Text, TouchableOpacity, Alert } from 'react-native';
 
-import BasketProduct from "../components/BasketProduct";
-import TotalPriceBasket from "../components/TotalPriceBasket";
+import BasketProduct from '../components/BasketProduct';
+import TotalPriceBasket from '../components/TotalPriceBasket';
 import { AuthContext } from '../components/Context';
 
 export default function Basket(props) {

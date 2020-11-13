@@ -3,8 +3,8 @@ import axios from 'axios';
 import { FlatList, View, ScrollView, ImageBackground, StyleSheet, Dimensions, Text, TouchableOpacity, Alert, RefreshControl } from 'react-native';
 import { Picker } from '@react-native-community/picker';
 
-import BasketProduct from "../components/BasketProduct";
-import TotalPriceBasket from "../components/TotalPriceBasket";
+import BasketProduct from '../components/BasketProduct';
+import TotalPriceBasket from '../components/TotalPriceBasket';
 import { AuthContext } from '../components/Context';
 
 export default function Basket(props) {
@@ -35,7 +35,7 @@ export default function Basket(props) {
         }
         catch (e) {
             console.log(e.message)
-            Alert.alert("😵 Erreur de connexion", "Une erreur est survenue lors de la connexion!\nMerci de vérifier que vous ayez bien une connexion internet...")
+            Alert.alert('😵 Erreur de connexion', 'Une erreur est survenue lors de la connexion!\nMerci de vérifier que vous ayez bien une connexion internet...')
             setPickerList([])
         }
     }
@@ -49,10 +49,10 @@ export default function Basket(props) {
             if (basket.length < 1 || basket.find(({ quantity }) => quantity == 0))
                 return
             else {
-                navigation.navigate("Résumé")
+                navigation.navigate('Résumé')
             }
         } catch (error) {
-            Alert.alert("😨 Error panier", "Veuillez re-éssayer dans quelques instants,\nIl se peut qu'un problème de connection soit le problème")
+            Alert.alert('😨 Error panier', "Veuillez re-éssayer dans quelques instants,\nIl se peut qu'un problème de connection soit le problème")
             console.error(error)
         }
     }
@@ -91,9 +91,9 @@ export default function Basket(props) {
                         style={styles.picker}
                         onValueChange={(value) => addProduct(value)} >
                         <Picker.Item
-                            label="Selectionnez un produit"
-                            value="-1"
-                            key="0" />
+                            label='Selectionnez un produit'
+                            value='-1'
+                            key='0' />
                         {pickerList.map((product) => (
                             <Picker.Item
                                 label={product.name}
@@ -114,7 +114,7 @@ export default function Basket(props) {
 const styles = StyleSheet.create({
 
     backgroundButtonPaid: {
-        backgroundColor: "rgba(150, 150, 255, 0.8)",
+        backgroundColor: 'rgba(150, 150, 255, 0.8)',
         borderColor: 'transparent',
         marginTop: 3,
         borderWidth: 1,
@@ -149,9 +149,9 @@ const styles = StyleSheet.create({
         textShadowRadius: 7,
     },
     picker: {
-        backgroundColor: "rgba(200, 200, 200, 0.8)",
+        backgroundColor: 'rgba(200, 200, 200, 0.8)',
         borderWidth: 1,
-        borderTopColor: "rgba(0, 0, 0, 1)",
+        borderTopColor: 'rgba(0, 0, 0, 1)',
         paddingTop: 20,
         position: 'relative',
         bottom: 0,
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
     pickerTitle: {
 
         borderWidth: 1,
-        borderColor: "transparent",
+        borderColor: 'transparent',
         borderTopColor: "rgba(0, 0, 0, 1)",
         paddingTop: 20,
         position: 'relative',
@@ -169,6 +169,6 @@ const styles = StyleSheet.create({
         right: 0,
 
         fontSize: 20,
-        textDecorationLine: "underline",
+        textDecorationLine: 'underline',
     },
 });

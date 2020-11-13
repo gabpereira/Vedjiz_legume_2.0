@@ -20,7 +20,7 @@ export default function ChangeStock( props ) {
         }
         catch (e) {
             console.log(e.message)
-            Alert.alert("😵 Erreur de connexion", "Une erreur est survenue lors de la connexion!\nMerci de vérifier que vous ayez bien une connexion internet...")
+            Alert.alert('😵 Erreur de connexion', 'Une erreur est survenue lors de la connexion!\nMerci de vérifier que vous ayez bien une connexion internet...')
             setProducts([])
         }
         finally {
@@ -70,13 +70,13 @@ const styles = StyleSheet.create({
         flex: 1,
         width: null,
         height: Dimensions.get('window').height,
-        justifyContent: "center",
-        alignItems: "center",
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     userBackground: {
         marginTop: 20,
-        width: Dimensions.get("window").width - 20,
-        height: Dimensions.get("window").height - 120,
+        width: Dimensions.get('window').width - 20,
+        height: Dimensions.get('window').height - 120,
         backgroundColor: "rgba(200, 200, 200, 0.8)",
         padding: 40
     },
@@ -84,18 +84,18 @@ const styles = StyleSheet.create({
         width: '100%',
         fontSize: 30,
         textAlign: 'center',
-        fontWeight: "bold",
-        textDecorationLine: "underline",
-        textTransform: "capitalize",
+        fontWeight: 'bold',
+        textDecorationLine: 'underline',
+        textTransform: 'capitalize',
     },
     info: {
-        width: "100%",
+        width: '100%',
         textAlign: 'left',
         lineHeight: 150,
         fontSize: 30,
     },
     cash: {
-        width: "100%",
+        width: '100%',
         textAlign: 'center',
         fontSize: 25,
     },
@@ -104,12 +104,12 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         marginTop: 20,
         padding: 30,
-        width: "100%",
+        width: '100%',
         textAlign: 'center',
         fontSize: 20,
     },
     logout: {
-        backgroundColor: "rgba(150, 0, 0, 0.8)",
+        backgroundColor: 'rgba(150, 0, 0, 0.8)',
     },
     error: {
         flex: 1,
