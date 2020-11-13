@@ -2,10 +2,8 @@ import React from 'react';
 import axios from 'axios';
 
 import { FlatList, View, ImageBackground, StyleSheet, Dimensions, Text, TouchableOpacity, Alert, RefreshControl } from 'react-native';
-import { AuthContext } from '../components/Context';
 
 import Splash from './Splash';
-import StockProduct from '../components/StockProduct';
 
 export default function Stock( props ) {
     const { navigation } = props;
@@ -14,14 +12,23 @@ export default function Stock( props ) {
     const [products, setProducts] = React.useState(async () => getProducts());
 
     const [quantity, setQuantity] = React.useState(null);
-    const {sendChange} = React.useContext(AuthContext);
 
     function getChangeStock({ navigation }, product) {
-        navigation.navigate("Stock", { product: product })
+        navigation.navigate('Stock', { product: product })
     }
-    function changeStock(quantity) {
-        sendChange({quantity})
-        getChangeStock()
+    async function changeStock(quantity) {
+        setQuantity()
+        var data = []
+        products.forEach(({id, stock}) =>{
+            data = [data, {id: id, quantity: stock}]
+        });
+        try{
+            await axios.post(`/products/stock`, { quantity: data })
+            Alert.alert('Les quantités ont été enregistrées')
+        } catch (e) {
+            console.log(e.message)
+            Alert.alert("Une erreur s'est produite")
+        }
     }
 
 
@@ -65,22 +72,16 @@ export default function Stock( props ) {
                     data={products}
                     keyExtractor={(product) => product.id.toString()}
                     ListEmptyComponent={
-                        <View style={{
-                            flex: 1,
-                            height: Dimensions.get('window').height
-                        }}>
-                            <Text style={styles.error}>Veuillez tirer vers le bas pour raffraîchir la page</Text>
+                        <View style={{ flex: 1, }}>
+                            <Text style={styles.error}>Un problème est survenu, veuillez revenir en arrière et tester à nouveau</Text>
+                            <TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
+                                <Text>Revenir en arrière</Text>
+                            </TouchableOpacity>
                         </View>
                     }
-                    renderItem={(product) => (
-                        <StockProduct navigation={navigation} product={product.item} />
+                    renderItem={({ item }) => (
+                        <Text style={ styles.list }>{item.name}: {item.stock} {item.unit}</Text>
                     )}
-                    refreshControl={
-                        <RefreshControl
-                            refreshing={refreshing}
-                            onRefresh={getProducts}
-                        />
-                    }
                 />
             </View>
         </ImageBackground>
@@ -118,6 +119,12 @@ const styles = StyleSheet.create({
         width: "100%",
         textAlign: 'center',
         fontSize: 15,
+    },
+    list: {
+        width: "100%",
+        textAlign: 'left',
+        fontSize: 20,
+        color: 'black'
     },
     error: {
         flex: 1,
