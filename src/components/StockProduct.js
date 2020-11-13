@@ -4,7 +4,7 @@ import axios from 'axios';
 import { View, ScrollView, ImageBackground, StyleSheet, Dimensions, Text, TouchableOpacity, Alert, RefreshControl } from 'react-native';
 import {AuthContext} from './Context';
 
-export default function StockProduct({ props }) {
+export default function StockProduct( props ) {
     const [quantity, setQuantity] = React.useState(null);
     const {sendChange} = React.useContext(AuthContext);
 
@@ -20,7 +20,7 @@ export default function StockProduct({ props }) {
         <View style={styles.background}>
             <Text style={styles.cash}>{props.product.name}</Text>
             <Text>: </Text>
-            <Text value={quantity}>{props.product.stock.quantity}</Text>
+            <Text value={quantity}>{props.product.stock} {props.product.unit}</Text>
             <TouchableOpacity onPress={() => getChangeStock({ navigation }, props.product)}>
                 <Text style={[styles.back]}>Recommencer</Text>
             </TouchableOpacity>

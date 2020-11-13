@@ -5,7 +5,7 @@ import { FlatList, View, ScrollView, ImageBackground, StyleSheet, Dimensions, Te
 import Splash from './Splash';
 import CarouselProduct from '../components/CarouselProduct';
 
-export default function ChangeStock({props}) {
+export default function ChangeStock( props ) {
     const { navigation } = props;
     const [isLoading, setIsLoading] = React.useState(true);
     const [refreshing, setRefreshing] = React.useState(false);

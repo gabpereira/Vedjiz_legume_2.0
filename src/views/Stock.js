@@ -7,9 +7,8 @@ import { AuthContext } from '../components/Context';
 
 import Splash from './Splash';
 import StockProduct from '../components/StockProduct';
-axios.defaults.timeout = 500;
 
-export default function Stock({props}) {
+export default function Stock( props ) {
     const { navigation } = props;
     const [isLoading, setIsLoading] = React.useState(true);
     const [refreshing, setRefreshing] = React.useState(false);
@@ -21,7 +20,6 @@ export default function Stock({props}) {
             setRefreshing(true)
             setIsLoading(true)
             var res = await axios.get('/products')
-            var quantity = await axios.get('/products/stock')
             setProducts(res.data.data)
         }
         catch (e) {
