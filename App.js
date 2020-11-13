@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
-import axios from 'axios'
+import axios from 'axios';
 
 import { AuthContext } from './src/components/Context';
 import { Alert } from 'react-native';
@@ -12,6 +12,7 @@ export default function App() {
   const [isLoading, setIsLoading] = React.useState(false);
   const [userToken, setUserToken] = React.useState(null);
   const [basket, setBasket] = React.useState([]);
+  const [quantity, setQuantity] = React.useState([]);
   React.useEffect(() => {
     async function fetchData()
     {
@@ -19,7 +20,7 @@ export default function App() {
       if(basket == null){
         basket = []
       }
-      setBasket(basket)     
+      setBasket(basket)
     }
     fetchData()
   }, [])
@@ -34,36 +35,51 @@ export default function App() {
         let basket = JSON.parse(await AsyncStorage.getItem('@basket'))
         if (basket === null)
         basket = []
-        
+
         if (basket.length != 0 && basket.find(({ id }) => id == product.id)){
           Alert.alert("Market 😶", `le produit '${product.name}' est déjà présent dans votre panier`);
           return;
         }
         product.quantity = "1"
         basket.push(product)
-        await AsyncStorage.setItem('@basket', JSON.stringify(basket))   
-        setBasket(basket)     
+        await AsyncStorage.setItem('@basket', JSON.stringify(basket))
+        setBasket(basket)
       },
       updateBasketProduct: async (product) => {
         let basket = JSON.parse(await AsyncStorage.getItem('@basket'))
         basket.find(({ id }) => id == product.id).quantity = product.quantity
         console.log(basket.find(({ id }) => id == product.id))
-        await AsyncStorage.setItem('@basket', JSON.stringify(basket))  
+        await AsyncStorage.setItem('@basket', JSON.stringify(basket))
         setBasket(basket)
       },
       removeOnBasket: async (product) => {
         let basket = JSON.parse(await AsyncStorage.getItem('@basket'))
-        
+
         basket = basket.filter(({id}) => id != product.id)
-        
-        await AsyncStorage.setItem('@basket', JSON.stringify(basket))   
-        setBasket(basket)     
+
+        await AsyncStorage.setItem('@basket', JSON.stringify(basket))
+        setBasket(basket)
         Alert.alert("Market 😲", `Le produit ${product.name} a été retiré`);
       },
       removeBasket: async () => {
-        
-        await AsyncStorage.setItem('@basket', JSON.stringify([]))   
-        setBasket([])     
+
+        await AsyncStorage.setItem('@basket', JSON.stringify([]))
+        setBasket([])
+      },
+      updateQuantityProduct: async (quantity) =>{
+        try {
+          setQuantity()
+          var res = await axios.post(`/products/stock`, { quantity: product.stock.quantity })
+          setUserToken(null)
+          Alert.alert("Les quantités ont été enregistrées")
+        }
+        catch (e) {
+          console.log(e.message)
+          Alert.alert("Une erreur s'est produite")
+        }
+        finally {
+          setIsLoading(false)
+        }
       },
       signIn: async (token) => {
         try {

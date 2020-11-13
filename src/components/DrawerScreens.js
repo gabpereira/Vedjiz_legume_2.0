@@ -11,7 +11,11 @@ import Profil from '../views/Profil';
 import Basket from '../views/Basket';
 import SummaryBasket from '../views/SummaryBasket';
 import Payement from '../views/Payement';
-import {AuthContext} from './Context';
+
+import ChangeStock from '../views/ChangeStock';
+import Stock from '../views/Stock'
+import { AuthContext } from './Context';
+
 
 const ProductsStack = createStackNavigator();
 const ProductsStackScreen = ({navigation}) => (
@@ -54,6 +58,25 @@ const profilStackScreen = ({navigation}) => (
         }}/>
     </profilStack.Navigator>
 );
+const stockStack = createStackNavigator();
+const stockStackScreen = ({ navigation }) => (
+    <stockStack.Navigator >
+        <stockStack.Screen name="Stock" component={ChangeStock} options={{
+            title: "Stock",
+            headerLeft: () => (
+                <TouchableOpacity style={{ paddingLeft: 10, paddingTop: 5 }} onPress={() => navigation.openDrawer()}>
+                    <Icon name='ios-menu' size={25} color='black' />
+                </TouchableOpacity>
+            ),
+            headerRight: () => (
+                <TouchableOpacity style={{ paddingRight: 10, paddingTop: 5 }} onPress={() => navigation.navigate("Stock")}>
+                    <Icon name='basket' size={25} color='black' />
+                </TouchableOpacity>
+            )
+        }} />
+        <stockStack.Screen name="sendChangeOfStock" component={Stock} options={{title: "résumé du stock"}}/>
+    </stockStack.Navigator>
+);
 const basketStack = createStackNavigator();
 const basketStackScreen = ({navigation}) => {
 
@@ -86,17 +109,18 @@ const basketStackScreen = ({navigation}) => {
 const Drawer = createDrawerNavigator();
 export const DrawerScreen = () => (
     <Drawer.Navigator initialRouteName="Profil"
-                      drawerType="back"
-                      drawerContentOptions={{
-                          labelStyle: {
-                              fontSize: 20,
-                          },
-                          activeBackgroundColor: "rgba(160, 187, 194, 0.5)",
-                          activeTintColor: "rgb(0, 94, 146)"
-                      }}
-                      drawerStyle={{position: "absolute", top: 60}}>
-        <Drawer.Screen name="Profil" component={profilStackScreen}/>
-        <Drawer.Screen name="Panier" component={basketStackScreen}/>
-        <Drawer.Screen name="Magasin" component={ProductsStackScreen}/>
+        drawerType="back"
+        drawerContentOptions={{
+            labelStyle: {
+                fontSize: 20,
+            },
+            activeBackgroundColor: "rgba(160, 187, 194, 0.5)",
+            activeTintColor: "rgb(0, 94, 146)"
+        }}
+        drawerStyle={{ position: "absolute", top: 60 }} >
+        <Drawer.Screen name="Profil" component={profilStackScreen} />
+        <Drawer.Screen name="Panier" component={basketStackScreen} />
+        <Drawer.Screen name="Magasin" component={ProductsStackScreen} />
+        <Drawer.Screen name="Stock" component={stockStackScreen} />
     </Drawer.Navigator>
 );
