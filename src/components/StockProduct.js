@@ -1,32 +1,14 @@
 import React from 'react';
 import axios from 'axios';
 
-import { View, ScrollView, ImageBackground, StyleSheet, Dimensions, Text, TouchableOpacity, Alert, RefreshControl } from 'react-native';
-import {AuthContext} from './Context';
+import { View, ScrollView, ImageBackground, StyleSheet, Dimensions, Text, TouchableOpacity, Alert, RefreshControl, FlatList } from 'react-native';
 
 export default function StockProduct( props ) {
-    const [quantity, setQuantity] = React.useState(null);
-    const {sendChange} = React.useContext(AuthContext);
 
-    function getChangeStock({ navigation }, product) {
-        navigation.navigate("Stock", { product: product })
-    }
-    function changeStock(quantity) {
-        sendChange({quantity})
-        getChangeStock()
-    }
     const { navigation } = props;
     return (
         <View style={styles.background}>
-            <Text style={styles.cash}>{props.product.name}</Text>
-            <Text>: </Text>
-            <Text value={quantity}>{props.product.stock} {props.product.unit}</Text>
-            <TouchableOpacity onPress={() => getChangeStock({ navigation }, props.product)}>
-                <Text style={[styles.back]}>Recommencer</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => changeStock()}>
-                <Text style={[styles.back]}>Enregistrer</Text>
-            </TouchableOpacity>
+            <Text style={styles.cash}>{props.product.name}: {props.product.stock} {props.product.unit}</Text>
         </View>
     )
 }
@@ -35,8 +17,7 @@ const styles = StyleSheet.create({
     background: {
         flex: 1,
         width: null,
-        height: Dimensions.get('window').height,
-        justifyContent: "center",
+        padding: 10,
         alignItems: "center",
     },
     userBackground: {
@@ -62,17 +43,16 @@ const styles = StyleSheet.create({
     },
     cash: {
         width: "100%",
-        textAlign: 'center',
-        fontSize: 25,
+        textAlign: 'left',
+        fontSize: 20,
     },
     back: {
         backgroundColor: "rgba(150, 150, 150, 0.8)",
         borderRadius: 20,
-        marginTop: 20,
-        padding: 30,
+        padding: 10,
         width: "100%",
         textAlign: 'center',
-        fontSize: 20,
+        fontSize: 15,
     },
     logout: {
         backgroundColor: "rgba(150, 0, 0, 0.8)",

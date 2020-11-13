@@ -14,6 +14,17 @@ export default function Stock( props ) {
     const [refreshing, setRefreshing] = React.useState(false);
     const [products, setProducts] = React.useState(async () => getProducts());
 
+    const [quantity, setQuantity] = React.useState(null);
+    const {sendChange} = React.useContext(AuthContext);
+
+    function getChangeStock({ navigation }, product) {
+        navigation.navigate("Stock", { product: product })
+    }
+    function changeStock(quantity) {
+        sendChange({quantity})
+        getChangeStock()
+    }
+
 
     async function getProducts() {
         try {
@@ -43,6 +54,14 @@ export default function Stock( props ) {
         >
             <View style={styles.userBackground}>
                 <Text style={styles.title}>Validation du Stock</Text>
+                <View style={{flexDirection: 'row'}}>
+                    <TouchableOpacity onPress={() => getChangeStock({ navigation }, props.product)} style={{flex: 1, paddingLeft: 2, paddingRight: 2}}>
+                        <Text style={[styles.back]}>Recommencer</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => changeStock()} style={{flex: 1, paddingLeft: 2, paddingRight: 2}}>
+                        <Text style={[styles.back]}>Enregistrer</Text>
+                    </TouchableOpacity>
+                </View>
                 <FlatList
                     data={products}
                     keyExtractor={(product) => product.id.toString()}
@@ -91,6 +110,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         textDecorationLine: "underline",
         textTransform: "capitalize",
+        paddingBottom: 10,
     },
     info: {
         width: "100%",
@@ -106,11 +126,10 @@ const styles = StyleSheet.create({
     back: {
         backgroundColor: "rgba(150, 150, 150, 0.8)",
         borderRadius: 20,
-        marginTop: 20,
-        padding: 30,
+        padding: 10,
         width: "100%",
         textAlign: 'center',
-        fontSize: 20,
+        fontSize: 15,
     },
     logout: {
         backgroundColor: "rgba(150, 0, 0, 0.8)",
