@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, TextInput, View, Image, TouchableOpacity, Alert, StyleSheet } from 'react-native';
+import { Text, TextInput, View, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Fontisto';
 import { ip, port } from '../../app.json';
 import { AuthContext } from '../components/Context';
@@ -23,7 +23,7 @@ export default function BasketProduct(props) {
             return
         }
 
-        setQuantity(quantity)        
+        setQuantity(quantity)
         props.product.quantity = quantity
         updateBasketProduct(props.product)
     }
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     pictureSummary: {
-        borderColor: "rgba(0, 0, 0, 0.2)", 
+        borderColor: "rgba(0, 0, 0, 0.2)",
         backgroundColor: "white",
         borderWidth: 1,
         top: 5,
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
         borderRadius: 100,
     },
     picture: {
-        borderColor: "rgba(0, 0, 0, 0.2)", 
+        borderColor: "rgba(0, 0, 0, 0.2)",
         backgroundColor: "white",
         borderWidth: 1,
         top: 15,

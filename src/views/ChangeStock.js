@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { FlatList, View, ScrollView, ImageBackground, StyleSheet, Dimensions, Text, Image, TouchableOpacity, Alert, RefreshControl } from 'react-native';
+import { FlatList, View, ImageBackground, StyleSheet, Dimensions, Text, Alert, RefreshControl } from 'react-native';
 
 import Splash from './Splash';
 import CarouselProduct from '../components/CarouselProduct';

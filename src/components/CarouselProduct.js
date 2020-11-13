@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import { View, StyleSheet, Dimensions, Text, Image, TouchableOpacity, TextInput} from 'react-native';

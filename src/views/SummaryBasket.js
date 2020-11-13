@@ -1,6 +1,5 @@
 import React from 'react';
-import axios from 'axios';
-import { FlatList, View, ScrollView, ImageBackground, StyleSheet, Dimensions, Text, Image, TouchableOpacity, Alert, RefreshControl } from 'react-native';
+import { FlatList, View, ImageBackground, StyleSheet, Dimensions, Text, TouchableOpacity, Alert } from 'react-native';
 
 import BasketProduct from "../components/BasketProduct";
 import TotalPriceBasket from "../components/TotalPriceBasket";
@@ -9,7 +8,7 @@ import { AuthContext } from '../components/Context';
 export default function Basket(props) {
     const { basket, removeBasket } = React.useContext(AuthContext);
     const { navigation } = props;
-    
+
     async function sendBasket() {
         try {
             navigation.navigate("payement")

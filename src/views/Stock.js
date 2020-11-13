@@ -1,8 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-import { FlatList, View, ScrollView, ImageBackground, StyleSheet, Dimensions, Text, Image, TouchableOpacity, Alert, RefreshControl } from 'react-native';
-import { isEmpty, ip, port } from '../components/Helpers';
+import { FlatList, View, ImageBackground, StyleSheet, Dimensions, Text, TouchableOpacity, Alert, RefreshControl } from 'react-native';
 import { AuthContext } from '../components/Context';
 
 import Splash from './Splash';
@@ -112,17 +111,6 @@ const styles = StyleSheet.create({
         textTransform: "capitalize",
         paddingBottom: 10,
     },
-    info: {
-        width: "100%",
-        textAlign: 'left',
-        lineHeight: 150,
-        fontSize: 30,
-    },
-    cash: {
-        width: "100%",
-        textAlign: 'center',
-        fontSize: 25,
-    },
     back: {
         backgroundColor: "rgba(150, 150, 150, 0.8)",
         borderRadius: 20,
@@ -130,9 +118,6 @@ const styles = StyleSheet.create({
         width: "100%",
         textAlign: 'center',
         fontSize: 15,
-    },
-    logout: {
-        backgroundColor: "rgba(150, 0, 0, 0.8)",
     },
     error: {
         flex: 1,

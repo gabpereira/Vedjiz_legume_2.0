@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Text, View, TextInput, TouchableOpacity, TouchableHighlight, Alert } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity } from 'react-native';
 import Styles from '../styles/Register_Login';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { isEmpty } from './Helpers';
@@ -11,7 +11,7 @@ export default function Login() {
     const [token, setToken] = React.useState(null);
     const { signIn } = React.useContext(AuthContext);
 
-    
+
     function showPassword() {
         setIsHidden(!isHidden);
     }

@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { FlatList, View, ScrollView, ImageBackground, StyleSheet, Dimensions, Text, Image, TouchableOpacity, Alert, RefreshControl } from 'react-native';
+import { FlatList, View, ScrollView, ImageBackground, StyleSheet, Dimensions, Text, TouchableOpacity, Alert, RefreshControl } from 'react-native';
 import { Picker } from '@react-native-community/picker';
 
 import BasketProduct from "../components/BasketProduct";

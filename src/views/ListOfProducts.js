@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { FlatList, View, ScrollView, ImageBackground, StyleSheet, Dimensions, Text, Image, TouchableOpacity, Alert, RefreshControl } from 'react-native';
+import { FlatList, View, ImageBackground, StyleSheet, Dimensions, Text, Alert, RefreshControl } from 'react-native';
 
 import Splash from './Splash';
 import Product from "../components/Product";
@@ -48,7 +48,7 @@ export default function ListOfProduct(props) {
                             flex: 1,
                             height: Dimensions.get('window').height
                         }}>
-                            <Text style={styles.error}>Veuillez tirer vers le bas pour raffraîchir la page</Text>                            
+                            <Text style={styles.error}>Veuillez tirer vers le bas pour raffraîchir la page</Text>
                         </View>
                     }
                     renderItem={(product) => (

@@ -1,6 +1,6 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { TouchableOpacity, View, Text } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -74,7 +74,7 @@ const stockStackScreen = ({ navigation }) => (
 );
 const basketStack = createStackNavigator();
 const basketStackScreen = ({ navigation }) => {
-    
+
     const { removeBasket } = React.useContext(AuthContext);
     return (
     <basketStack.Navigator >
@@ -93,7 +93,7 @@ const basketStackScreen = ({ navigation }) => {
         }} />
         <basketStack.Screen name="Résumé" component={SummaryBasket} options={{
             title: "résumé du panier",
-        }} />        
+        }} />
         <basketStack.Screen name="payement" component={Payement} options={{
             title: "Payer",
         }} />

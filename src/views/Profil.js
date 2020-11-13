@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 
 import { View, ScrollView, ImageBackground, StyleSheet, Dimensions, Text, TouchableOpacity, Alert, RefreshControl } from 'react-native';
-import { isEmpty, ip, port } from '../components/Helpers';
 import { AuthContext } from '../components/Context';
 
 import Splash from './Splash';

@@ -1,9 +1,7 @@
-import Axios from 'axios';
 import React from 'react';
 import { Text, View, Image, TouchableOpacity, Alert, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Fontisto';
 import {ip, port} from '../../app.json';
-import axios from 'axios'
 import { AuthContext } from '../components/Context';
 
 
@@ -41,18 +39,18 @@ export default function Produc(props) {
 
 const styles = StyleSheet.create({
     background: {
-        backgroundColor: "rgba(200, 200, 200, 0.5)",        
+        backgroundColor: "rgba(200, 200, 200, 0.5)",
         borderColor: 'transparent',
         marginTop: 3,
         borderWidth: 1,
         color: 'white',
-        borderRadius: 1,        
+        borderRadius: 1,
         shadowColor: 'black',
         shadowOpacity: 10,
         elevation: 2,
         padding: 10,
     },
-    product: {        
+    product: {
         flex: 1,
         flexDirection: "row",
         justifyContent: "flex-start",
@@ -66,13 +64,13 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
         overflow:"hidden"
     },
-    
+
     informations: {
         flex:1,
         padding: 15,
         paddingTop: 5
     },
-    title: {     
+    title: {
         width: "70%",
         fontSize: 15,
         textDecorationLine: "underline",
@@ -93,14 +91,14 @@ const styles = StyleSheet.create({
         paddingBottom: 15,
     },
     stock: {
-        height: 40, 
+        height: 40,
     },
     price:{
         position: "absolute",
         left: 15,
         bottom: 5
     },
-    market: {        
+    market: {
         position: "absolute",
         right: 15,
         bottom: 15,

@@ -1,11 +1,8 @@
 import React from 'react';
-import axios from 'axios';
 
-import { View, ScrollView, ImageBackground, StyleSheet, Dimensions, Text, TouchableOpacity, Alert, RefreshControl, FlatList } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 
 export default function StockProduct( props ) {
-
-    const { navigation } = props;
     return (
         <View style={styles.background}>
             <Text style={styles.cash}>{props.product.name}: {props.product.stock} {props.product.unit}</Text>
@@ -20,51 +17,9 @@ const styles = StyleSheet.create({
         padding: 10,
         alignItems: "center",
     },
-    userBackground: {
-        marginTop: 20,
-        width: Dimensions.get("window").width - 20,
-        height: Dimensions.get("window").height - 120,
-        backgroundColor: "rgba(200, 200, 200, 0.8)",
-        padding: 40
-    },
-    title: {
-        width: '100%',
-        fontSize: 30,
-        textAlign: 'center',
-        fontWeight: "bold",
-        textDecorationLine: "underline",
-        textTransform: "capitalize",
-    },
-    info: {
-        width: "100%",
-        textAlign: 'left',
-        lineHeight: 150,
-        fontSize: 30,
-    },
     cash: {
         width: "100%",
         textAlign: 'left',
         fontSize: 20,
     },
-    back: {
-        backgroundColor: "rgba(150, 150, 150, 0.8)",
-        borderRadius: 20,
-        padding: 10,
-        width: "100%",
-        textAlign: 'center',
-        fontSize: 15,
-    },
-    logout: {
-        backgroundColor: "rgba(150, 0, 0, 0.8)",
-    },
-    error: {
-        flex: 1,
-        color: 'white',
-        fontSize: 20,
-        textAlign: 'center',
-        marginTop: '50%',
-        textShadowColor: '#000',
-        textShadowOffset: { width: 3, height: 3 },
-        textShadowRadius: 7,
-    }
 });

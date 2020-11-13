@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Dimensions, ImageBackground, Text } from 'react-native';
+import { View, Dimensions, ImageBackground } from 'react-native';
 import { PacmanIndicator } from 'react-native-indicators';
 
 export default function Homepage() {
