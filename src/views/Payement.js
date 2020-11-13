@@ -28,7 +28,7 @@ export default function Payement({ navigation }) {
             navigation.navigate('Panier')
             navigation.navigate('Profil')
         } catch (error) {
-            Alert.alert('😨 Error panier', 'Veuillez re-éssayer dans quelques instants,\nIl se peut qu'un problème de connection soit le problème'')
+            Alert.alert('😨 Error panier', "Veuillez re-éssayer dans quelques instants,\nIl se peut qu'un problème de connection soit le problème")
         }
     }
     return (
