@@ -5,25 +5,37 @@ import { View, StyleSheet, Dimensions, Text, Image, TouchableOpacity, TextInput}
 import {ip, port} from '../../app.json';
 
 export default function CarouselProduct( props ) {
+
     const [quantity, setQuantity] = React.useState(null);
+
 
     function getChangeStock({ navigation }, product) {
         navigation.navigate("sendChangeOfStock", { product: product })
+    }
+
+    function snapToPrev(value){
+    }
+
+    function snapToNext(value){
     }
 
     const { navigation } = props;
     return (
         <View style={styles.background}>
             <Image style={styles.picture} source={{ uri: `http://${ip}:${port}/storage/pictures/${props.product.picture}` }} />
-            <Text style={styles.cash}>{props.product.name}</Text>
-            <TouchableOpacity onPress={() => this.SwapSlide.snapToPrev()}><Icon name='arrow-back-outline' size={25} color='black' /></TouchableOpacity>
-            <TouchableOpacity onPress={() => this.SwapSlide.snapToNext()}><Icon name='arrow-forward-outline' size={25} color='black' /></TouchableOpacity>
-            <Text>Stock: </Text>
-            <TextInput placeholder={String(props.product.stock)} onChangeText={setQuantity} keyboardType="phone-pad"/>
-            <Text>{props.product.unit}</Text>
-            <TouchableOpacity onPress={() => getChangeStock({ navigation }, props.product)}>
-                <Text style={[styles.back]}>Ok</Text>
-            </TouchableOpacity>
+            <View style={{flexDirection: 'row', paddingTop: 20}}>
+                <TouchableOpacity onPress={() => snapToPrev(index - 1)} style={{flex: 1, alignItems: 'center'}}><Icon name='arrow-back-outline' size={25} color='black'/></TouchableOpacity>
+                <Text style={styles.cash}>{props.product.name}</Text>
+                <TouchableOpacity onPress={() => snapToNext(index + 1)} style={{flex: 1, alignItems: 'center'}}><Icon name='arrow-forward-outline' size={25} color='black' /></TouchableOpacity>
+            </View>
+            <View style={{flexDirection: 'row', paddingTop: 20, alignItems: 'center'}}>
+                <Text style={{flex: 1}}>Stock: </Text>
+                <TextInput placeholder={String(props.product.stock)} onChangeText={setQuantity} keyboardType='phone-pad' style={{flex: 1}}/>
+                <Text style={{flex: 1}}>{props.product.unit}</Text>
+                <TouchableOpacity onPress={() => getChangeStock({ navigation }, props.product)} style={{flex: 1}}>
+                    <Text style={styles.back}>Ok</Text>
+                </TouchableOpacity>
+            </View>
 
         </View>
     )
@@ -33,9 +45,9 @@ const styles = StyleSheet.create({
     background: {
         flex: 1,
         width: null,
-        height: Dimensions.get('window').height,
         justifyContent: "center",
         alignItems: "center",
+        paddingTop: 40,
     },
     userBackground: {
         marginTop: 20,
@@ -61,16 +73,16 @@ const styles = StyleSheet.create({
     cash: {
         width: "100%",
         textAlign: 'center',
-        fontSize: 25,
+        fontSize: 18,
+        flex: 1
     },
     back: {
-        backgroundColor: "rgba(150, 150, 150, 0.8)",
-        borderRadius: 20,
-        marginTop: 20,
-        padding: 30,
-        width: "100%",
+        backgroundColor: 'rgba(150, 150, 150, 0.8)',
+        borderRadius: 10,
+        padding: 5,
+        width: '50%',
         textAlign: 'center',
-        fontSize: 20,
+        fontSize: 15
     },
     logout: {
         backgroundColor: "rgba(150, 0, 0, 0.8)",
